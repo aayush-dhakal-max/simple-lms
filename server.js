@@ -11,5 +11,6 @@ app.get("/", (req, res) => {
 
 const server = http.createServer(app);
 server.listen(process.env.PORT, "0.0.0.0", () => {
+  require("./database/dbConnection")();
   console.log(`Server is running at http://localhost:${process.env.PORT}`);
 });
