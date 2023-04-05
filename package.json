@@ -1,0 +1,19 @@
+{
+  "name": "simple-lms",
+  "version": "1.0.0",
+  "description": "lms with simple features",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aayush-dhakal-max/simple-lms.git"
+  },
+  "author": "aayush-dhakal-max",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aayush-dhakal-max/simple-lms/issues"
+  },
+  "homepage": "https://github.com/aayush-dhakal-max/simple-lms#readme"
+}
