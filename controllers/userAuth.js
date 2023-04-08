@@ -87,7 +87,13 @@ const login = async (req, res) => {
 
 const view_student_profile = async (req, res) => {
   return res.json({
-    message: `You are successfully logged in as user: ${req.email}`,
+    message: `You are successfully logged in as user: ${req.user}`,
   });
 };
-module.exports = { signup, login, view_student_profile };
+
+const view_teacher_profile = async (req, res) => {
+  return res.json({
+    message: `You are successfully logged in as user: ${req.user}`,
+  });
+};
+module.exports = { signup, login, view_student_profile, view_teacher_profile };

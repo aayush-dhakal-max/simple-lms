@@ -1,7 +1,34 @@
 const JWT = require("jsonwebtoken");
-const secret_key = process.env.JWT_SECRET;
+const { public_key } = require("../utils/keys");
 
-const studentCheck = async (req, res) => {
-  const jwt_token = req.cookie.JWT;
-  console.log(jwt_token);
+const studentCheck = async (req, res, next) => {
+  const jwt_token = req.cookies.JWT;
+  try {
+    const verifyToken = JWT.verify(jwt_token, public_key);
+    console.log(verifyToken);
+    if (verifyToken) {
+      req.user = verifyToken.email;
+      next();
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 };
+
+const teacherCheck = async (req, res, next) => {
+  const jwt_token = req.cookies.JWT;
+  try {
+    const verifyToken = JWT.verify(jwt_token, public_key);
+    console.log(verifyToken);
+    if (verifyToken.role == "teacher") {
+      req.user = verifyToken.email;
+      next();
+    } else {
+      return res.status(403).json({ error: "403 Forbidden to this page" });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+module.exports = { studentCheck, teacherCheck };
